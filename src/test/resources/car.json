@@ -1,0 +1,7 @@
+{
+  "brand": "Jeep",
+  "doors": 3,
+  "body": {
+    "material": "aluminium"
+  }
+}

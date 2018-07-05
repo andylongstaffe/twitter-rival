@@ -3,6 +3,7 @@ package com.hollywood.twitterrival.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hollywood.twitterrival.model.Tweet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
@@ -14,11 +15,10 @@ import java.util.List;
 @Service
 public class LocalFileTweetService implements TweetService {
 
-    Tweet[] tweets;
-    Gson gson;
+    private Tweet[] tweets;
 
-    public LocalFileTweetService() {
-        gson = new GsonBuilder().setDateFormat("EEE MMM dd HH:mm:ss Z yyyy").create();
+    @Autowired
+    public LocalFileTweetService(Gson gson) {
         try {
             tweets = gson.fromJson(new FileReader("src/main/resources/tweets.json"), Tweet[].class);
         } catch (FileNotFoundException e) {
